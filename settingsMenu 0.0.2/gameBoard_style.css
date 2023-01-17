@@ -1,0 +1,259 @@
+body{
+	font-family: 'Quicksand',sans-serif;
+	text-align: center;
+}
+#outer-wrapper{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+}
+
+#position-wrapper {
+    height:100%;
+    width:100%;
+    display:table;
+}
+
+#vertical-wrapper {
+    vertical-align:middle;
+    height:100%;
+    display:table-cell;
+    z-index: 0;
+    /*border:1px solid #000;*/
+}
+.horizontal-wrapper{
+	margin:0 auto;
+	display: table;
+	position: relative;
+}
+.row-wrapper{
+	display:table;
+}
+		.asset-placeholder{
+			height:inherit;
+			width:inherit;
+			position:relative;
+		}
+		.asset-wrapper{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+		#menu-button-wrapper{
+/*			text-align: center;
+			display:inline-block;*/
+		}
+		#menu-button{
+			height:30px;
+			margin:2px;
+			background-color: gray;
+			position:relative;
+		}
+		#menu-icon-wrapper{
+			display:inline-block;
+		}
+		.bar{
+			margin:5px;
+			height:3px;
+			width:100px;
+			background-color: white;
+		}
+		#arrow{
+			position: relative;
+			height:5px;
+			width:50px;
+			left:0;
+			top:0;
+			background-color: white;
+		}
+		#arrow::after{
+			position: relative;
+			height:5px;
+			width:50px;
+			background-color: white;
+			transform: rotate(30deg);
+
+			content: "";
+		}
+		.circle{
+			border-radius:50%;
+			height:75px;
+			width:75px;
+			background-color: gray;
+			border:0px solid white;
+		}
+		.cross{	
+			position: absolute;
+			overflow:visible!important;
+			left:50%;
+			top:50%;
+			transform: translate(-50%,-50%) rotate(45deg);
+			height:100px;
+			width:0px;
+			background-color: white;
+			/*transform: rotate(-45deg);*/
+		}
+		.cross-after{
+			position: absolute;
+			left:50%;
+			top:50%;
+			transform: translate(-50%,-50%) rotate(-90deg);
+			height:inherit;
+			width:inherit;
+			background-color: white;
+			/*transform: rotate(45deg);*/
+		}
+
+		.asset-placeholder{
+			height:inherit;
+			width:inherit;
+			position:relative;
+		}
+		.asset-wrapper{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+		#grid-container{
+			/*display:none;*/
+		}
+		#pauseMenu-overlay{
+			position: relative;
+			height:100%;
+			width: 100%;
+			left:0;
+			top:0;
+		}
+		#pauseMenu-position-wrapper{
+			position: absolute;
+			z-index: 1;
+			top:50%;
+			left:50%;
+			transform: translate(-50%,-50%);
+		}
+		#pauseMenu-container{
+			height:300px;
+			width:300px;
+			background:gray;
+			position: relative;
+
+		}
+		#pauseMenu-content-wrapper{
+			/*height:270px;
+
+			width: 270px;
+			position: absolute;
+			margin:15px;*/
+
+
+		}
+		#pauseMenu-position-wrapper{
+			position: absolute;
+			left:50%;
+			top:50%;
+			transform: translate(-50%,-50%);
+		}
+		#pauseMenu-cross-wrapper{
+			float:right;
+			width:inherit;
+		}
+		.noOutline{
+			outline:none;
+			border:none;
+			padding:0;
+		}
+		#pauseMenu-option-wrapper{
+			text-align: center;
+			display: table;
+		}
+		.pauseMenu-option-splitter{
+			border:none;
+			height:2px;
+			background-color:white;
+			width:80%;
+		}
+		#pauseMenu-close-button{
+			background-color: transparent;
+			background: url("./MEDIA/settings_cross.svg");
+			background-size: cover;
+		}
+		#pauseMenu-restart-button{
+
+			background:url("./MEDIA/restart_arrow.svg") no-repeat center center;
+			background-size: contain;
+			color:white;
+			font-size:60px;
+			background-color: transparent;
+			font-weight: 12px;
+			/*float:left;*/
+			/*transform: rotate(-60deg);*/
+			
+			border:0;
+			padding:0;
+		}
+		#pauseMenu-gear-button{
+
+			background:url("./MEDIA/settings_gear.svg");
+			background-size: cover;
+			color:white;
+			font-size:50px;
+			background-color: transparent;
+			font-weight: 12px;
+			
+			border:0;
+			padding:0;
+		}
+		#pauseMenu-scoreboard-button{
+			background: url("./MEDIA/scoreboard_bg2.svg");
+			background-size: contain;
+		}
+		#scoreboard-icon-wrapper{
+			position: relative;
+			left:50%;
+			top:50%;
+			transform: translate(-50%,-50%);
+		}
+		#scoreboard-icon{
+			transform: scale(0.75);
+		}
+		.pause-button{
+			height:100px;
+			width:100px;
+			background-color:transparent;
+			margin:15px;
+			float: left;
+		}
+		.pauseMenu-row-wrapper{
+			display: flex;
+			clear:both;
+			float: left;
+
+		}
+
+		#center-ref{
+			height:100px;
+			width:100px;
+			background-color:blue;
+		}
+		#pauseMenu-option-wrapper{
+			/*display: inline-block;*/
+			/*display: none;*/
+		}
+		#stats-screen-container{
+			display:none;
+		}
+		#settingsMenu-container{
+			display: none;
+		}
+		.pos-ref{
+			height:10px;
+			width: 10px;
+			background-color: black;
+		}
+.flex-content-wrapper{
+	display:flex;
+}

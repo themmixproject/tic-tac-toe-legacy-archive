@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		#square{
+			height:100px;
+			width:100px;
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+<div id="square"></div>
+</body>
+<script type="text/javascript" src="jquery-3.2.1.min.js" preload></script>
+<script type="text/javascript">
+
+var longClick = true;
+var shortClick = true;
+var thisSet;
+	$("#square").mousedown(function(){
+		
+		
+		$this = $(this);
+		clearTimeout(thisSet);
+		longClick=true;
+		shortClick=true;
+		console.log(longClick,shortClick);
+		thisSet = setTimeout(function(){
+			
+			if(longClick==true){
+				$this.css("backgroundColor","black");
+				shortClick=false;	
+			}
+			
+		},1000);
+	});
+	$("#square").mouseup(function(){
+		clearTimeout(thisSet);
+		longClick=false;
+		
+		console.log(longClick,shortClick);
+		if(shortClick==true){
+			$(this).css("backgroundColor","blue");
+		}
+	});
+	// $("#square").click(function(){
+	// 	$(this).css("backgroundColor","blue");
+	// });
+</script>
+</html>

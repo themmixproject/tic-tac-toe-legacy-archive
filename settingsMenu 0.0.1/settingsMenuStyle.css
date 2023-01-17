@@ -1,0 +1,163 @@
+	body{
+	font-family: 'Quicksand',sans-serif;
+	text-align: center;
+}
+	.asset-placeholder{
+			height:inherit;
+			width:inherit;
+			position:relative;
+		}
+		.circle{
+			border-radius:50%;
+			height:75px;
+			width:75px;
+			background-color: gray;
+			border:0px solid white;
+		}
+		.cross{	
+			position: absolute;
+			overflow:visible!important;
+			left:50%;
+			top:50%;
+			transform: translate(-50%,-50%) rotate(45deg);
+			height:100px;
+			width:0px;
+			background-color: white;
+			/*transform: rotate(-45deg);*/
+		}
+		.cross-after{
+			position: absolute;
+			left:50%;
+			top:50%;
+			transform: translate(-50%,-50%) rotate(-90deg);
+			height:inherit;
+			width:inherit;
+			background-color: white;
+			/*transform: rotate(45deg);*/
+		}
+		#pauseMenu-overlay{
+			position: relative;
+			height:100%;
+			width: 100%;
+			left:0;
+			top:0;
+		}
+		#pauseMenu-container{
+			height:300px;
+			width:300px;
+			background:gray;
+			position: relative;
+
+		}
+		#pauseMenu-cross-wrapper{
+			float:right;
+			width:inherit;
+		}
+		#pauseMenu-option-wrapper{
+			text-align: center;
+			display: table;
+		}
+		.pauseMenu-option-splitter{
+			border:none;
+			height:2px;
+			background-color:white;
+			width:80%;
+		}
+		#pauseMenu-close-button{
+			background-color: transparent;
+			background: url("./MEDIA/settings_cross.svg");
+			background-size: cover;
+		}
+		#pauseMenu-restart-button{
+
+			background:url("./MEDIA/restart_arrow.svg") no-repeat center center;
+			background-size: contain;
+			color:white;
+			font-size:60px;
+			background-color: transparent;
+			font-weight: 12px;
+			/*float:left;*/
+			/*transform: rotate(-60deg);*/
+			
+			border:0;
+			padding:0;
+		}
+		#pauseMenu-gear-button{
+
+			background:url("./MEDIA/settings_gear.svg");
+			background-size: cover;
+			color:white;
+			font-size:50px;
+			background-color: transparent;
+			font-weight: 12px;
+			
+			border:0;
+			padding:0;
+		}
+		#pauseMenu-scoreboard-button{
+			background: url("./MEDIA/scoreboard_bg2.svg");
+			background-size: contain;
+		}
+		#scoreboard-icon-wrapper{
+			position: relative;
+			left:50%;
+			top:50%;
+			transform: translate(-50%,-50%);
+		}
+		#scoreboard-icon{
+			transform: scale(0.75);
+		}
+		.pause-button{
+			height:100px;
+			width:100px;
+			background-color:transparent;
+			margin:15px;
+			float: left;
+		}
+		.pauseMenu-row-wrapper{
+			display: flex;
+			clear:both;
+			float: left;
+
+		}
+		.page-overlay{
+			height:100%;
+			width:100%;
+			 top: 0; 
+			left: 0;
+			right: 0;
+			bottom: 0;
+			position: absolute;
+		}
+		.pos-ref{
+			height:20px;
+			width:20px;
+			background-color:blue;
+		}
+		.grid-square{
+			height:100px;
+			width:100px;
+			background-color:gray;
+			border-style: none;
+			border:1px solid gray;
+			margin:-1px;
+			-webkit-user-select: none; /* Chrome/Safari */        
+			-moz-user-select: none; /* Firefox */
+			-ms-user-select: none; /* IE10+ */
+			/* Rules below not implemented in browsers yet */
+			-o-user-select: none;
+			user-select: none;
+		}
+		
+		.absolute-xy{
+			position: absolute;
+			padding:0;
+			left: 50%;
+			top: 50%;
+			-webkit-transform: translate(-50%, -50%);
+			transform: translate(-50%, -50%);
+		}
+		.inherit-hw{
+			height:inherit;
+			width:inherit;
+		}

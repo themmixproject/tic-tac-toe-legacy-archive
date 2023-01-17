@@ -1,0 +1,197 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+ 
+}
+body{
+	text-align:center;
+}
+		.container{
+			display:inline-block;
+         height: 100%;
+         margin-top:100px;
+
+		}
+  span{
+      -webkit-transform-style: preserve-3d;
+  }
+		.box{
+			 box-sizing: border-box;
+    		-moz-box-sizing: border-box;
+    		-webkit-box-sizing: border-box;
+    		float:left;
+			width:100px;
+			height:100px;
+			margin:2px;
+        	 background-color:transparent;
+        	 border:4.5px solid black;
+         	border-radius:20%;
+			font-size:50px;
+			text-align: center;
+			line-height: 180%;
+			font-family:"Arial";
+    -webkit-transform-style: preserve-3d;
+		}
+	#resultOverlay{
+		    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0; 
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index:100;
+    display:none;
+    background-color: rgba(0,0,0,0.5);
+  -webkit-transform-style: preserve-3d;
+	}
+      #resultContainer{
+         background-color: rgba(0,0,0,0.6);
+         height: 120px;
+         width: 280px;
+         margin:auto;
+         top:180px;
+         position:relative;
+         border-radius:30px;
+        -webkit-transform-style: preserve-3d;
+      }
+     span.result{
+     	font-size:20px;
+     	font-family:"Arial";
+     	color:white;
+     }
+      #restartNdiv{
+      	height:40px;
+      	width:40px;
+      	background:lightgray url('MEDIA/Icons/restartN.png');
+      -webkit-transform-style: preserve-3d;
+      }
+      span.result{
+      	text-align:center;
+      	font-size:50px;
+      	font-family:"Arial";
+      	line-height:250%;
+      	color:white;
+      	display:block;
+
+      }
+		div.buttoncontainer{
+			width:300px;
+			height:100px;
+		}
+      div.buttoncontainer{
+         float:left;
+         margin-top:5px;
+         width:312px;
+
+         text-align:center;
+      }
+      div.mode_placeholder{
+         background:url("./MEDIA/Icons/nightmode.png");
+         background-size:contain;
+         background-repeat:no-repeat;
+         display:inline-block;
+         height:40px;
+         width:40px;
+         float:left;
+         border-radius:50%;
+      }
+      .centerButton{
+      	height:50px;
+      	width:50px;
+      	float:left;
+      	border:4px solid black;
+      	border-radius:50%;
+      	margin-left:6px;
+      	margin-right:6px;
+      	text-align:center;
+      }
+      .sideButton{
+      	float:left;
+      	height:40px;
+      	width:40px;
+		border:4px solid black;
+		border-radius:50%;
+		text-align:center;
+      }
+      .icon{
+      	width:inherit;
+      	height:inherit;
+      }
+      #moonIcon{
+      	background:url("MEDIA/Icons/night.png");
+      	background-size:contain;
+         position: absolute;
+      }
+      #sunIcon{
+         background:url("MEDIA/Icons/sun.png");
+         background-size:contain;
+         position: absolute;
+         display: none;
+      }
+      .playerIconPlaceholder{
+         float: left;
+         position: relative;
+      }
+      .playerIconPlaceholder.second{
+         float: right;
+         overflow: visible;
+         position: relative;
+         bottom: 40px;
+      }
+		.playerIcon{
+			background:url("MEDIA/Icons/single.png");
+		    background-size:contain;
+		    float:left;
+
+		}
+      .playerIconN{
+         background:url("MEDIA/Icons/singleN.png");
+          background-size:contain;
+          position: absolute;
+          display: none;
+          overflow: visible;
+          float: right;
+
+      }
+      		#restartIcon{
+      		background:url("./MEDIA/Icons/restart2.png");	
+      		background-size:contain;
+      		height:40px;
+      		width:40px;
+      		margin-left:5px;
+      		margin-top:5px;
+      		position: fixed;
+        -webkit-transform-style: preserve-3d;
+
+		}
+		#restartIconN{
+      		background:url("./MEDIA/Icons/restartN.png");	
+      		background-size:contain;
+      		height:40px;
+      		width:40px;
+      		margin:auto;
+      		margin-left:5px;
+      		margin-top:5px;
+      		position: fixed;
+      		display:none;
+        -webkit-transform-style: preserve-3d;
+
+		}
+
+      div.button_placeholder{
+      	margin: auto;
+      	display:inline-block;
+      }
+      img.Ximg{
+      	width: 50px;
+      	height: 50px;
+      	line-height: 100px;
+      }
+      .txtOutput{
+      	display:none;
+      }

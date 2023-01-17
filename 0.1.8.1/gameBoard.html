@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		#main-wrapper{
+			position:relative;
+		}
+		#board-wrapper{
+		  position: fixed;
+		  top: 50%;
+		  left: 50%;
+		  transform:translate(-50%, -50%);
+		}	
+		#block{
+			height:100px;
+			width:100px;
+			background-color:black;
+		}
+		.square{
+			float:left;
+			height:80px;
+			width:80px;
+			border:2px solid black;
+			margin:5px;
+		}
+	</style>
+</head>
+<body>
+<div id="main-wrapper">
+	<div id="board-wrapper">
+		<div id="board-container">
+			<div class="row-wrapper">
+				<div class="square"></div>
+				<div class="square"></div>
+				<div class="square"></div>
+			</div>
+			<div class="row-wrapper">
+				<div class="square"></div>
+				<div class="square"></div>
+				<div class="square"></div>
+			</div>
+			<div class="row-wrapper">
+				<div class="square"></div>
+				<div class="square"></div>
+				<div class="square"></div>
+			</div>
+		</div>
+	<!-- <div id="block"></div> -->
+
+	</div>
+</div>
+<!-- <script type="text/javascript">
+var main = document.getElementById("board-wrapper");
+	for(i=0;i<9;i++){
+		var block = document.createElement("div");
+		block.className = "square";
+		main.appendChild(block);
+
+	}
+</script> -->
+</body>
+</html>

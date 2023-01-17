@@ -1,0 +1,180 @@
+		
+		
+
+
+
+
+
+
+
+
+
+.settingsMenu-content-wrapper{
+	display: flex;
+}
+.settingsMenu-pos-ref{
+	float:left;
+	height:30px;
+	width:30px;
+	/*margin:5px;*/
+	border:2px solid black;
+}
+.divRow{
+	display: inline-block;
+}
+
+
+
+
+
+		.back-button-wrapper{
+			background:url("./MEDIA/backArrow.png") center center no-repeat;
+			background-size:contain;
+			height:50px;
+			width:100px;
+		}
+		#back-button-header{
+			font-family: 'Quicksand',sans-serif;
+			color:white;
+			font-size: 35px;
+			float: left;
+			display: table-cell;
+			vertical-align: center;
+		}
+		#back-button-h-ver-pos{
+			padding: 1px 0;
+			height:inherit;
+			margin-left:5px;
+			/*transform: translateY(-50%);*/
+		}
+
+
+
+
+
+
+
+		.switch-wrapper{
+			/*display: table;*/
+			margin:20px;
+		}
+		#settingsMenu-container{
+		}
+		#day-icon-wrapper{
+			background: url("./MEDIA/daymode_bg.svg");
+			background-size:cover;
+		}
+		#night-icon-wrapper{
+			background: url("./MEDIA/nightmode_bg.svg") no-repeat center center;
+			background-size:contain;
+		}
+		#singlePlayer-icon-wrapper{
+			background: url("./MEDIA/onePlayer_bg.svg") no-repeat center center;
+			background-size: contain;
+		}
+		#twoPlayer-icon-wrapper{
+			background: url("./MEDIA/twoPlayer_bg.svg") no-repeat center center;
+			background-size: contain;
+		}
+		.switch-icon{
+			height:35px;
+			width:35px;
+			/*float: left;*/
+		}
+		.switch-icon-left{
+			margin-right:5px;
+		}
+		.switch-icon-right{
+			margin-left:5px;
+		}
+		.switch-container{
+			width:65px;
+			height:35px;
+			background-color:rgba(0,0,0,0.5);
+			border-radius:100px;
+			float:left;
+			display: table;
+		}
+.switch-rel-pos-wrapper{
+			position: relative;
+			height:inherit;
+			width: inherit;
+			margin-left:5px;
+			margin-right: 5px;
+		}
+		.switch-indicator{
+			position: absolute;
+			top:50%;
+			transform: translate(0,-50%);
+			height:25px;
+			width:25px;
+			border-radius:50%;
+			/*background-color:rgba(0,0,0,0.5);*/
+			background-color:rgba(255,255,255,0.8);
+		}
+		
+
+		.switch{
+			float:left;
+		}
+
+
+
+
+
+
+
+
+
+
+
+		#theme-change-wrapper{
+			text-align: center;
+
+			/*display: inline-block;*/
+			
+		}
+		#theme-header-wrapper{
+			display: inline-block;
+		}
+		#theme-header{
+			font-family: 'Quicksand',sans-serif;
+			color:white;
+			font-size: 25px;
+		}
+		#theme-header-underline{
+			width:inherit;
+			height:1.5px;
+			margin-top:3px;
+			background-color:white;
+			border-radius: 100px;
+		}
+		#theme-option-container{
+			margin:8px;
+		}
+		.theme-option{
+			height:20px;
+			float: left;
+			width: 20px;
+			border:2px solid white;
+			margin: 3px;
+			border-radius:3px;
+		}
+		.theme-option-pos{
+			justify-content:center;
+		}
+		.theme-option:nth-child(1){
+			background-color:gray;
+		}
+		.theme-option:nth-child(2){
+			background-color:darkred;
+		}
+		.theme-option:nth-child(3){
+			background-color:darkblue;
+		}
+		.theme-option:nth-child(4){
+			background-color:green;
+		}
+		.theme-option:nth-child(5){
+			background-color:purple;
+		}

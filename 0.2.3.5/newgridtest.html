@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="reset.css"/>
+	<style type="text/css">
+	#outer-wrapper{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+}
+
+#position-wrapper {
+    height:100%;
+    width:100%;
+    display:table;
+}
+
+#vertical-wrapper {
+    vertical-align:middle;
+    height:100%;
+    display:table-cell;
+    /*border:1px solid #000;*/
+}
+#horizontal-wrapper{
+	margin:0 auto;
+	display: table;
+}
+.row-wrapper{
+	display:table;
+}
+.grid-square{
+	height:100px;
+	width:100px;
+	background-color: gray;
+	float:left;
+	/*margin:2px;*/
+}
+
+
+
+
+
+	</style>
+</head>
+<body>
+<div id="outer-wrapper">
+    <div id="position-wrapper">
+        <div id="vertical-wrapper">
+            <!-- This content is vertically centered. -->
+            <div id="horizontal-wrapper">
+            	<div id="grid-container">
+            	<div class="row-wrapper">
+            		<div class="grid-square"></div>
+            		<div class="grid-square"></div>
+            		<div class="grid-square"></div>
+            	</div>
+            	<div class="row-wrapper">
+            		<div class="grid-square"></div>
+            		<div class="grid-square"></div>
+            		<div class="grid-square"></div>
+            	</div>
+            	<div class="row-wrapper">
+            		<div class="grid-square"></div>
+            		<div class="grid-square"></div>
+            		<div class="grid-square"></div>
+            	</div>
+            	</div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

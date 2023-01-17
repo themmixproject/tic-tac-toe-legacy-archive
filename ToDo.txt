@@ -1,0 +1,3 @@
+TO DO
+- make a basevalues file
+- make an array with all the arrloop arrays so you can use if for the wincheck and ai function

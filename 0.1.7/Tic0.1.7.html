@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<link rel='stylesheet' type="text/css" href="Tic_style.css"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+</head>
+<body>
+<div class="container">
+<!-- <div id="blackBox">
+	<img src="./MEDIA/Icons/restartN.png">
+</div>
+ -->
+	<div id="resultOverlay">
+		<div id="resultContainer">
+			<span class="result"></span>
+		</div>
+	</div>
+<div class="box_container">
+	<div class="output" id="output"></div>
+		<div class="box">
+			<span class="txtOutput"></span>
+		</div>
+
+	<div class="box" >
+		<span class="txtOutput"></span>
+	</div>
+	<div class="box" >
+		<span class="txtOutput"></span>
+	</div>
+	<br>
+	<div class="box">
+		<span class="txtOutput"></span>
+	</div>
+	<div class="box">
+		<span class="txtOutput"></span>
+	</div>
+	<div class="box">
+		<span class="txtOutput"></span>
+	</div>
+	<br>
+	<div class="box">
+		<span class="txtOutput"></span>
+	</div>
+	<div class="box" >
+		<span class="txtOutput"></span>
+	</div>
+	<div class="box">
+		<span class="txtOutput"></span>
+	</div>
+	</div>
+	<div class="buttoncontainer">
+			<div class="button_placeholder">
+		<div class="sideButton" id="mode">
+		<div id="moonIcon" class="icon"></div>
+		<div id="sunIcon" class="icon"></div>
+			<!-- <div class="mode_placeholder" id="modeselect"></div> -->
+		</div>
+		<div class="centerButton" id="restart">
+				<div id="restartIcon" class="icon"></div>
+				<div id="restartIconN" class="icon"></div>
+   			<!-- <div class="reset_placeholder" id="restart_button"></div> -->
+   		</div>
+   		<div class="sideButton" id="playersButton">
+			<!-- <div class="player1_placeholder" id="playerselect"></div> -->
+			<div id="playerIcon" class="icon playerIconPlaceholder">
+				<div class="icon playerIcon"></div>
+				<div class="icon playerIconN"></div>
+			</div>
+			<div id="playerIcon" class="icon playerIconPlaceholder second">
+				<div class="icon playerIcon"></div>
+				<div class="icon playerIconN"></div>
+			</div>
+		</div>
+		</div>            
+      </div>
+	</div>
+<script src="AIv0.5.js" preload></script>
+<script src="jquery-3.2.1.min.js" preload></script>
+<script src="_plugins/QTransform-master/QTransform.js" preload></script>
+<script src="_plugins/jquery-color/jquery.color-2.1.2.js" preload></script>
+<script src="_plugins/jquery-color/jquery.color.svg-names-2.1.2.js" preload></script>
+
+<script src="./_plugins./jquery-ui-1.11.4/jquery-ui.min.js"></script>
+
+<script type="text/javascript" src="_plugins/easing/jquery.easing.1.3.js" preload></script>
+
+<script type="text/javascript" preload>
+$('.playerIconPlaceholder').eq(1).offset().top=$('.playerIconPlaceholder').eq(0).offset().top+'px';
+var X="<img src='./MEDIA/Player/X.png' class='Ximg'></img>";
+var grid=[0,0,0,0,0,0,0,0,0];
+var MEDIA="./MEDIA/Icons";
+var output = document.getElementById("output");
+var switches={
+	multi:false,
+	night:false,
+	turn:true,
+	win:false,
+	animation:false
+};
+var anDur=1500;
+function winCheck(player) {
+	console.log(player+"win check");
+		if(
+ 			(grid[0]==player&&grid[1]==player&&grid[2]==player)
+	 		||
+	 		(grid[3]==player&&grid[4]==player&&grid[5]==player)
+			||
+			(grid[6]==player&&grid[7]==player&&grid[8]==player)
+			||
+			(grid[0]==player&&grid[3]==player&&grid[6]==player)
+			||
+			(grid[1]==player&&grid[4]==player&&grid[7]==player)
+			||
+			(grid[2]==player&&grid[5]==player&&grid[8]==player)
+			||
+			(grid[0]==player&&grid[4]==player&&grid[8]==player)
+			||
+			(grid[2]==player&&grid[4]==player&&grid[6]==player)
+ 		 )	
+ 		{	
+ 			$('#resultContainer').find('span').text(player+" WINS");
+ 			$('.result').fadeIn();
+ 			setTimeout(function(){$('#resultOverlay').fadeIn();},250);
+ 			switches.win=true;
+ 			switches.turn=false;
+ 		}
+ 		else if(
+ 			(grid[0]!=0)&&
+ 			(grid[1]!=0)&&
+ 			(grid[2]!=0)&&
+ 			(grid[3]!=0)&&
+ 			(grid[4]!=0)&&
+ 			(grid[5]!=0)&&
+ 			(grid[6]!=0)&&
+ 			(grid[7]!=0)&&
+ 			(grid[8]!=0)&&
+ 			(switches.win==false)
+ 			)
+ 		{
+ 			$('#resultContainer').find('span').text("TIE");
+ 			$('.result').fadeIn();
+ 			setTimeout(function(){$('#resultOverlay').fadeIn();},250);
+
+ 			
+
+ 			switches.turn=false;
+ 			switches.win=true;
+ 		}
+ 	};
+	function reset(){
+		console.log("reset");
+		  //$('div#restart_button').css({'transform' : 'rotate'('0deg')});
+		grid=["0","0","0","0","0","0","0","0","0"];
+		console.log(grid);
+		$('span').fadeOut('fast');
+		$('span').promise().done(function(){
+    	$('span').text('');
+		});
+	    $('.output').text('');
+		win=false;
+		$('div#output').css({'backgroundColor':'transparent'});
+		switches.turn=true;
+		switches.win=false;
+	}
+$(document).ready(function(){
+
+$('.box').click(function(){
+	if(switches.multi==false){
+		if($(this).find('span.txtOutput').text()=='' && switches.turn==true && switches.win==false){
+			switches.turn=false;
+			$(this).find('span.txtOutput').text('O');
+			$(this).find('span.txtOutput').fadeIn();
+			console.log($(this).index());
+			grid[$(this).index('.box')]="O";
+			winCheck("O");
+			if(switches.win==false){setTimeout(function() { block(); }, 140);};
+			//grid[$(event.currentTarget.className.split()[1])]='O';
+			console.log(grid);
+		}	
+		else{
+			console.log("choose an empty block");
+		}
+
+	}
+	else{	
+		if($(this).find('span').text()=='' && switches.turn==true){
+			$(this).find('span').text('O');
+					winCheck('O');
+			$(this).find('span').fadeIn();
+			console.log('block chosen');
+			switches.turn=false;
+		}
+		else if($(this).find('span').text()=='' && switches.turn==false){
+			$(this).find('span').text('X');
+			$(this).find('span').fadeIn();
+					winCheck('X');
+			console.log('block chosen');
+			switches.turn=true;
+		};
+	}
+
+});
+
+
+		$('#restart').click(function(){
+			if(switches.animation==false){
+				switches.animation=true;
+				$(this).find('div').animate({rotate:'-=360deg'},{duration:950,easing:'easeOutQuad',queue:true});
+				setTimeout(function() { switches.animation=false }, 650);
+
+					
+			}
+			else{console.log("animation is still running")};
+			reset();
+		});
+		$('#mode').click(function(){
+			console.log(switches.multi , switches.night);
+			if(switches.night==false){
+				switches.night=true;
+				$('body').animate({'backgroundColor':'Black'},{duration:anDur,queue:true});
+				$('.sideButton,.centerButton,.box').animate({'borderColor':'White'},{duration:anDur,queue:true});
+				$('.box span').animate({'color':'white'},{duration:anDur,queue:true});
+				$('#moonIcon,#restartIcon,.playerIcon').fadeOut({duration:anDur,queue:true});
+				$('#sunIcon ,#restartIconN,.playerIconN').fadeIn({duration:anDur,queue:true});
+			}
+			else{
+				switches.night=false;
+				$('body').animate({'backgroundColor':'White'},{duration:anDur,queue:true});
+				$('.sideButton,.centerButton,.box').animate({'borderColor':'Black'},{duration:anDur,queue:true});
+				$('.box span').animate({'color':'black'},{duration:anDur,queue:true});
+				$('#moonIcon,#restartIcon,.playerIcon').fadeIn({duration:anDur,queue:true});
+				$('#sunIcon ,#restartIconN,.playerIconN').fadeOut({duration:anDur,queue:true});
+			}
+
+		});
+$('#playersButton').click(function(){
+	console.log(switches.multi,switches.night);
+	if(switches.multi==false){
+		switches.multi=true;
+		$('.playerIconPlaceholder').eq(0).animate({right:8.5+'px',scale:0.86, easing:'easeOutSine'},250);
+		$('.playerIconPlaceholder').eq(1).animate({left:8.5+'px',scale:0.86, easing:'easeOutSine'},250);
+		reset();
+	}
+	else{
+		switches.multi=false;
+		$('.playerIconPlaceholder').eq(0).animate({right:0+'px',scale:1, easing:'easeOutSine'},250);
+		$('.playerIconPlaceholder').eq(1).animate({left:0+'px',scale:1, easing:'easeOutSine'},250);
+		reset();
+	};
+
+
+
+});
+$('#resultOverlay').click(function(){
+	$(this).fadeOut();
+		$(this).promise().done(function(){
+    	$(this).find('span').text('');
+    	reset();
+		});
+});
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.element-container{
+			height:300px;
+			width:300px;
+			background-color:gray;
+		}
+		.element-wrapper{
+			position:relative;
+			height:inherit;
+			width: inherit;
+		}
+		.element-placeholder{
+			position: absolute;
+			left:50%;
+			top:50%;
+			transform: translate(-50%,-50%);
+		}
+/*		.circle{
+			height:100px;
+			width:100px;
+			background-color: white;
+			border-radius:50%;
+		}
+		.circle::after{
+			position: absolute;
+			content: "";
+			height:70px;
+			width:70px;
+			left:50%;
+			top:50%;
+			transform: translate(-50%,-50%);
+			background-color: gray;
+			border-radius: 50%;
+		}*/
+/*		.circleBack{
+			position: relative;
+			height:53px;
+			width:53px;
+			background-color: white;
+			border-radius:50%;
+		}
+		.circleFront{
+			height:50px;
+			width:50px;
+			position:absolute;
+			left:50%;
+			top:50%;
+			border-radius:50%;
+
+			background-color: gray;
+			transform: translate(-50%,-50%);
+		}*/
+
+		.circle{
+			height:100px;
+			width:100px;
+			background-color: white;
+			border-radius:50%;
+		}
+		.circle-after{
+			position: absolute;
+			height:0px;
+			width:0px;
+			left:50%;
+			top:50%;
+			transform: translate(-50%,-50%);
+			background-color: gray;
+			border-radius: 50%;
+		}
+
+
+		.cross{
+			
+			position: absolute;
+			left:50%;
+			top:50%;
+			transform: translate(-50%,-50%) rotate(45deg);
+			height:100px;
+			width:30px;
+			background-color: black;
+			/*transform: rotate(-45deg);*/
+		}
+		.cross-after{
+			position: absolute;
+			left:50%;
+			top:50%;
+			transform: translate(-50%,-50%) rotate(-90deg);
+			height:100px;
+			width:30px;
+			background-color: black;
+			/*transform: rotate(45deg);*/
+		}
+	</style>
+</head>
+<body>
+<div class="element-container">
+<div class="element-wrapper">
+	<div class="element-placeholder">
+	<!-- <div class="circle"></div> -->
+<!-- 	<div class="cross">
+		<div class="cross-after"></div>
+	</div> -->
+<!-- 	<div class="circleBack">
+	<div class="circleFront"></div> -->
+	<div class="circle">
+		<div class="circle-after"></div>
+	</div>
+	</div>
+</div>
+</div>
+</body>
+</html>

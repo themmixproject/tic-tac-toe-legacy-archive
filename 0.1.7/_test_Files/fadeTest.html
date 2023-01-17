@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.block{
+			height: 100px;
+			width: 100px;
+			background-color: lightgray;
+		}
+		span{
+			display: none;
+		}
+		.box{
+			border: 2px solid black;
+			height: 100px;
+			width: 100px;
+			float: left;
+		}
+		.box:nth-child(even){
+			background-color: blue;
+		}
+		.container{
+			display: inline-block;
+		}
+	</style>
+</head>
+<body>
+<div class="block"><span class="output"></span></div>
+<div class="block"><span class="output"></span></div>
+<div class="container">
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+</div>
+<script type="text/javascript" src="_extentions/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+	$('.block').click(function(){
+		var target=event.currentTarget.className.split(' ')[1];
+		console.log(target)
+		$(this).find('.output').text("hello world");
+		$(this).find('.output').fadeIn();
+	});
+	$('div.box').click(function(){
+		$('.box:nth-child(1)').css({'background-color':'red'});
+	});
+</script>
+</body>
+</html>

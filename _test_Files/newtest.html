@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="reset.css">
+
+<style type="text/css">
+	#main-wrapper{
+/*position: relative;
+height:100%;
+width:100%;*/
+}
+#positioner{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#refference{
+	height:50px;
+	width:50px;
+	background-color:black;
+}
+.grid-square{
+	height:10px;
+	width:10px;
+	background-color: gray;
+	float:left;
+}
+</style>
+</head>
+<body>
+<div id="main-wrapper">
+	<div id="positioner">
+		<div id="refference">
+			<div id="grid-wrapper">
+			<div class="square-wrapper">
+				<div class="grid-square"></div>
+				</div>
+				<div class="grid-square"></div>
+
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div id="output"></div>
+<div id="output0"></div>
+<script type="text/javascript">
+	var outputs=new Array(document.getElementById("output"),document.getElementById("output0"));
+	outputs[0].innerhtml="number1";
+	console.log(outputs[0]);
+
+	eval(outputs[0]).innerHTML="number1";
+</script>
+</body>
+</html>

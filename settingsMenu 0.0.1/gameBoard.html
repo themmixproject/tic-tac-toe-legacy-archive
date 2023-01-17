@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="UTF-8">
+<!-- 	<style type="text/css">
+
+	</style> -->
+	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="gameBoard_style.css">
+	<link rel="stylesheet" type="text/css" href="reset.css"/>
+	<link rel="stylesheet" type="text/css" href="settings_style.css"/>
+	<link rel="stylesheet" type="text/css" href="stats_style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+</head>
+<body>
+<div id="outer-wrapper">
+<div id="pauseMenu-position-wrapper">
+				<div id="pauseMenu-container">
+				<!-- <div id="settings-content-wrapper"> -->
+				<div id="pauseMenu-position-wrapper">
+					<div id="pauseMenu-option-wrapper">
+					<div class="pauseMenu-row-wrapper">
+							<div id="pauseMenu-close-button" class="pause-button noOutline"></div>
+						
+					   
+							<div  class="noOutline pause-button" id="pauseMenu-restart-button"></div>
+							</div>
+							 <div class="pauseMenu-row-wrapper">
+							<div class="noOutline pause-button" id="pauseMenu-gear-button"></div>
+
+							<div class="noOutline pause-button" id="pauseMenu-scoreboard-button">
+								<div id="scoreboard-icon-wrapper">
+								</div>
+							</div>
+							</div>
+						</div>
+					   <div id="settingsMenu-container">
+						   <div class="settingsMenu-content-wrapper theme-option-pos">
+								<div id="settings-back-button" class="back-button-wrapper"></div>
+						   </div>
+
+							<div class="settingsMenu-content-wrapper switch-wrapper">
+								<div id="day-icon-wrapper" class="switch-icon switch-icon-left"></div>
+									<div class="switch-container">
+										<div class="switch-rel-pos-wrapper">
+											<div class="switch-indicator"></div>
+										</div>
+									</div>
+								<div id="night-icon-wrapper" class="switch-icon-right switch-icon"></div>
+							</div>
+							<div class="settingsMenu-content-wrapper switch-wrapper">
+								<div id="singlePlayer-icon-wrapper" class="switch-icon switch-icon-left"></div>
+									<div class="switch-container">
+										<div class="switch-rel-pos-wrapper">
+											<div class="switch-indicator"></div>
+										</div>
+									</div>
+								<div id="twoPlayer-icon-wrapper" class="switch-icon-right switch-icon"></div>
+							</div>
+							<div class="settings-content-wrapper">
+								<div id="theme-header-wrapper">
+									<h1 id="theme-header">THEME</h1>
+									<div id="theme-header-underline"></div>
+								</div>
+
+							</div>
+							<div class="settingsMenu-content-wrapper theme-option-pos">
+								<div id="theme-option-container">
+									<div class="theme-option"></div>
+									<div class="theme-option"></div>
+									<div class="theme-option"></div>
+									<div class="theme-option"></div>
+								</div>
+							</div>
+							
+						</div>
+						<div id="stats-screen-container">
+							<div id="stats-back-button" class="back-button-wrapper"></div>
+								<div id="stats-screen-header-wrapper">
+									<h1 id="stats-screen-header" class="stats-txt">STATS</h1>
+									<div id="stats-header-underline"></div>
+								</div>
+									<h2 class="stats-txt" id="games-played">TIES: <span class="stats-number"></span></h2>
+									<h2 class="stats-txt" id="games-played">WINS: <span class="stats-number"></span></h2>
+									<h2 class="stats-txt" id="games-played">LOSES: <span class="stats-number"></span></h2>
+									<h2 class="stats-txt" id="games-played">GAMES PLAYED: <span class="stats-number"></span></h2>
+						</div>
+				</div>
+				
+
+
+				</div>
+			</div>
+			<div id="settingsMenu-pos">
+
+			</div>
+	<div id="position-wrapper">
+		<div id="vertical-wrapper">
+			<div id="content-container" class="horizontal-wrapper">
+			
+			<div id="grid-container" class="horizontal-wrapper">
+				
+			<div class="row-wrapper">
+				<div class="grid-square"></div>
+				<div class="grid-square"></div>
+				<div class="grid-square"></div>
+			</div>
+			<div class="row-wrapper">
+				<div class="grid-square"></div>
+				<div class="grid-square"></div>
+				<div class="grid-square"></div>
+			</div>
+			<div class="row-wrapper">
+			<div class="grid-square"></div>
+				<div class="grid-square"></div>
+				<div class="grid-square"></div>
+			</div>
+			</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="plugins/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="plugins/jquery.color-2.1.2.js"></script>
+<script type="text/javascript" src="plugins/jquery-ui-1.11.4/jquery-ui.js"></script>
+<script type="text/javascript" src="plugins/jquery.easing.1.3.js"></script>
+<!-- <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"></script>
+	
+	TO DO
+
+	THEME: only change the color: of the grid squares
+	FOR MOBILE: bind functions to settings menu options after settings menu is loaded, when onloaded, debind them;
+	also, 
+
+ -->
+<script type="text/javascript" src="aI.js"></script>
+<script type="text/javascript" src="winCheck.js"></script>
+<script type="text/javascript" src="turn.js"></script>
+<script type="text/javascript" src="settings.js"></script>
+<script type="text/javascript" src="stats.js"></script>
+</body>
+</html>

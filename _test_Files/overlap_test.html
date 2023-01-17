@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.absolute-xy{
+			position: absolute;
+			padding:0;
+			left: 50%;
+			top: 50%;
+			-webkit-transform: translate(-50%, -50%);
+			transform: translate(-50%, -50%);
+		}
+		.pos-ref{
+			height:300px;
+			width:300px;
+			position: fixed;
+			transform: translate(-50%, -50%);
+		}
+	</style>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+</head>
+<body>
+<div class="absolute-xy">
+	<div class="pos-ref" style="background-color: blue; padding:1px"></div>
+	<div class="pos-ref" style="background-color: yellow;"></div>
+</div>
+<div class="absolute-xy">
+	
+</div>
+</body>
+</html>

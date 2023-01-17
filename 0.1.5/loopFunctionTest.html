@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	function changeChar(){
+		for(i=0,u="X";i<=1;i++,u="O"){
+			console.log(u);
+		}
+	}
+	function condition(F,S,T,inner){
+		console.log(arguments);
+	};
+
+var names=["hello","world"];
+names.forEach(function(item){
+	console.log(item);
+});
+function plusArr(arr,plus){
+	arr.forEach(function(item){
+		item+plus;
+	})
+	return arr;
+};
+var newVal = plusArr(names,3);
+	console.log(newVal);
+changeChar();
+</script>
+</body>
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="reset.css"/>
+	<link rel="stylesheet" type="text/css" href="settings_style.css"/>
+	<link rel="stylesheet" type="text/css" href="stats_style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<link rel="stylesheet" type="text/css" href="reset.css">
+	<style type="text/css">
+	body{
+	font-family: 'Quicksand',sans-serif;
+	text-align: center;
+}
+#position-wrapper {
+    height:100%;
+    width:100%;
+    display:table;
+}
+
+#vertical-wrapper {
+    vertical-align:middle;
+    height:100%;
+    display:table-cell;
+    z-index: 0;
+    /*border:1px solid #000;*/
+}
+.horizontal-wrapper{
+	margin:0 auto;
+	display: table;
+	position: relative;
+}
+.row-wrapper{
+	display:table;
+}
+		.asset-placeholder{
+			height:inherit;
+			width:inherit;
+			position:relative;
+		}
+		.circle{
+			border-radius:50%;
+			height:75px;
+			width:75px;
+			background-color: gray;
+			border:0px solid white;
+		}
+		.cross{	
+			position: absolute;
+			overflow:visible!important;
+			left:50%;
+			top:50%;
+			transform: translate(-50%,-50%) rotate(45deg);
+			height:100px;
+			width:0px;
+			background-color: white;
+			/*transform: rotate(-45deg);*/
+		}
+		.cross-after{
+			position: absolute;
+			left:50%;
+			top:50%;
+			transform: translate(-50%,-50%) rotate(-90deg);
+			height:inherit;
+			width:inherit;
+			background-color: white;
+			/*transform: rotate(45deg);*/
+		}
+		#pauseMenu-overlay{
+			position: relative;
+			height:100%;
+			width: 100%;
+			left:0;
+			top:0;
+		}
+		#pauseMenu-container{
+			height:300px;
+			width:300px;
+			background:gray;
+			position: relative;
+
+		}
+		#pauseMenu-cross-wrapper{
+			float:right;
+			width:inherit;
+		}
+		#pauseMenu-option-wrapper{
+			text-align: center;
+			display: table;
+		}
+		.pauseMenu-option-splitter{
+			border:none;
+			height:2px;
+			background-color:white;
+			width:80%;
+		}
+		#pauseMenu-close-button{
+			background-color: transparent;
+			background: url("./MEDIA/settings_cross.svg");
+			background-size: cover;
+		}
+		#pauseMenu-restart-button{
+
+			background:url("./MEDIA/restart_arrow.svg") no-repeat center center;
+			background-size: contain;
+			color:white;
+			font-size:60px;
+			background-color: transparent;
+			font-weight: 12px;
+			/*float:left;*/
+			/*transform: rotate(-60deg);*/
+			
+			border:0;
+			padding:0;
+		}
+		#pauseMenu-gear-button{
+
+			background:url("./MEDIA/settings_gear.svg");
+			background-size: cover;
+			color:white;
+			font-size:50px;
+			background-color: transparent;
+			font-weight: 12px;
+			
+			border:0;
+			padding:0;
+		}
+		#pauseMenu-scoreboard-button{
+			background: url("./MEDIA/scoreboard_bg2.svg");
+			background-size: contain;
+		}
+		#scoreboard-icon-wrapper{
+			position: relative;
+			left:50%;
+			top:50%;
+			transform: translate(-50%,-50%);
+		}
+		#scoreboard-icon{
+			transform: scale(0.75);
+		}
+		.pause-button{
+			height:100px;
+			width:100px;
+			background-color:transparent;
+			margin:15px;
+			float: left;
+		}
+		.pauseMenu-row-wrapper{
+			display: flex;
+			clear:both;
+			float: left;
+
+		}
+		.page-overlay{
+			height:100%;
+			width:100%;
+			 top: 0; 
+			left: 0;
+			right: 0;
+			bottom: 0;
+			position: absolute;
+		}
+		.pos-ref{
+			height:20px;
+			width:20px;
+			background-color:blue;
+		}
+		.grid-square{
+			height:100px;
+			width:100px;
+			background-color:gray;
+			border-style: none;
+			border:1px solid gray;
+			margin:-1px;
+			-webkit-user-select: none; /* Chrome/Safari */        
+			-moz-user-select: none; /* Firefox */
+			-ms-user-select: none; /* IE10+ */
+			/* Rules below not implemented in browsers yet */
+			-o-user-select: none;
+			user-select: none;
+		}
+		tr{
+			display: flex;
+
+		}
+		table{
+			border-spacing:0px;
+			border-collapse: collapse;
+		}
+		.absolute-xy{
+			position: absolute;
+			padding:0;
+			left: 50%;
+			top: 50%;
+			-webkit-transform: translate(-50%, -50%);
+			transform: translate(-50%, -50%);
+		}
+		.inherit-hw{
+			height:inherit;
+			width:inherit;
+		}
+	</style>
+</head>
+<body>
+	<div class="absolute-xy">
+		<table id="grid-container">
+			<tr>
+				<td class="grid-square"></td>
+				<td class="grid-square"></td>
+				<td class="grid-square"></td>
+			</tr>
+			<tr>
+				<td class="grid-square"></td>
+				<td class="grid-square"></td>
+				<td class="grid-square"></td>
+			</tr>
+			<tr>
+				<td class="grid-square"></td>
+				<td class="grid-square"></td>
+				<td class="grid-square"></td>
+			</tr>
+		</table>
+
+
+
+				<div id="pauseMenu-container" style="display:none;">
+				<!-- <div id="settings-content-wrapper"> -->
+				<div class="absolute-xy">
+					<div id="pauseMenu-option-wrapper">
+					<div class="pauseMenu-row-wrapper">
+							<div id="pauseMenu-close-button" class="pause-button "></div>
+						
+					   
+							<div  class="pause-button" id="pauseMenu-restart-button"></div>
+							</div>
+							 <div class="pauseMenu-row-wrapper">
+							<div class="pause-button" id="pauseMenu-gear-button"></div>
+
+							<div class="pause-button" id="pauseMenu-scoreboard-button">
+								<div id="scoreboard-icon-wrapper">
+								</div>
+							</div>
+							</div>
+						</div>
+					   <div id="settingsMenu-container">
+						   <div class="settingsMenu-content-wrapper theme-option-pos">
+								<div id="settings-back-button" class="back-button-wrapper"></div>
+						   </div>
+
+							<div class="settingsMenu-content-wrapper switch-wrapper">
+								<div id="day-icon-wrapper" class="switch-icon switch-icon-left"></div>
+									<div class="switch-container">
+										<div class="switch-rel-pos-wrapper">
+											<div class="switch-indicator"></div>
+										</div>
+									</div>
+								<div id="night-icon-wrapper" class="switch-icon-right switch-icon"></div>
+							</div>
+							<div class="settingsMenu-content-wrapper switch-wrapper">
+								<div id="singlePlayer-icon-wrapper" class="switch-icon switch-icon-left"></div>
+									<div class="switch-container">
+										<div class="switch-rel-pos-wrapper">
+											<div class="switch-indicator"></div>
+										</div>
+									</div>
+								<div id="twoPlayer-icon-wrapper" class="switch-icon-right switch-icon"></div>
+							</div>
+							<div class="settings-content-wrapper">
+								<div id="theme-header-wrapper">
+									<h1 id="theme-header">THEME</h1>
+									<div id="theme-header-underline"></div>
+								</div>
+
+							</div>
+							<div class="settingsMenu-content-wrapper theme-option-pos">
+								<div id="theme-option-container">
+									<div class="theme-option"></div>
+									<div class="theme-option"></div>
+									<div class="theme-option"></div>
+									<div class="theme-option"></div>
+								</div>
+							</div>
+							
+						</div>
+						<div id="stats-screen-container">
+							<div id="stats-back-button" class="back-button-wrapper"></div>
+								<div id="stats-screen-header-wrapper">
+									<h1 id="stats-screen-header" class="stats-txt">STATS</h1>
+									<div id="stats-header-underline"></div>
+								</div>
+									<h2 class="stats-txt" id="games-played">TIES: <span class="stats-number"></span></h2>
+									<h2 class="stats-txt" id="games-played">WINS: <span class="stats-number"></span></h2>
+									<h2 class="stats-txt" id="games-played">LOSES: <span class="stats-number"></span></h2>
+									<h2 class="stats-txt" id="games-played">GAMES PLAYED: <span class="stats-number"></span></h2>
+						</div>
+				</div>
+				
+
+
+				</div>
+		<!-- <div id="pauseMenu-container">
+		</div> -->
+	</div>
+	<div id="script-loader" preload>
+		<script type="text/javascript" src="plugins/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="plugins/jquery.color-2.1.2.js"></script>
+		<script type="text/javascript" src="plugins/jquery-ui-1.11.4/jquery-ui.js"></script>
+		<script type="text/javascript" src="plugins/jquery.easing.1.3.js"></script>
+		<!-- <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"></script>
+			
+			TO DO
+
+			THEME: only change the color: of the grid squares
+			FOR MOBILE: bind functions to settings menu options after settings menu is loaded, when onloaded, debind them;
+			also, 
+
+		 -->
+		<script type="text/javascript" src="aI.js"></script>
+		<script type="text/javascript" src="winCheck.js"></script>
+		<script type="text/javascript" src="turn.js"></script>
+		<script type="text/javascript" src="settings.js"></script>
+		<script type="text/javascript" src="stats.js"></script>
+	</div>
+</body>
+</html>

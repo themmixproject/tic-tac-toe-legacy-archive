@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		div#circle{
+			width:50px;
+			height:50px;
+			border-radius:50%;
+			border:5px solid black;
+
+				
+
+		}
+
+#cross {
+  background: red;
+  height: 100px;
+  position: relative;
+  width: 3px;
+  margin-left: 100px;
+  transform: rotate(45deg);
+}
+#cross::before {
+  background: red;
+  content: "";
+  height: 3px;
+  left: -48.5px;
+  position: absolute;
+  top: 48.5px;
+  width: 100px;
+}
+    div.box{
+      width:100px;
+      height:100px;
+      float:left;
+      border:2px solid white;
+      background-color:gray;
+     border-radius:20%;      
+          font-family:"Arial";
+          font-size: 10px;
+          text-align: center;
+            white-space: nowrap;
+            margin: 1em 0;
+    }
+span.helper{
+      display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+#circleBorder-container{
+  height:100px;
+  width:100px;
+  background-color:gray;
+}
+img{
+     width: 40px;
+     height: 40px;
+         vertical-align: middle
+       }
+
+
+	</style>
+</head>
+<body>
+<div id="circle"></div>
+<div id="cross"></div>
+<div id="circleBorder-container">
+<div id="circleBorder"></div>
+</div>
+  <div class='box'>
+    <span class='helper'>
+    <img src='MEDIA/Player/X.png'/>
+    </span>
+  </div>
+</body>
+</html>

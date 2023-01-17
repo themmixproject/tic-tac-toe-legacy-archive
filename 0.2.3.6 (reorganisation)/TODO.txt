@@ -1,0 +1,4 @@
+TO DO:
+
+- revamp stats symbol
+- make alternative version where you can access the pause menu from the gambeboard

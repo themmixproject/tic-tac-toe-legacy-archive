@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		div{
+			position:fixed;
+		}
+	</style>
+</head>
+<body>
+<div id="circle"><div id="square"></div></div>
+<script type="text/javascript" src="_extentions/jquery/jquery-3.2.1.min.js" preload></script>
+<script type="text/javascript" src="_extentions/QTransform-master/QTransform.js" preload></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('div#square').css({height:"40px",width:"40px",backgroundColor:"white"});
+	$('div#circle').css({borderRadius:"50%",height:"50px",width:"50px",backgroundColor:"black"});
+
+	$('div#circle').click(function(){
+		$('div#circle').animate({rotate:"+=50deg"},1000);
+	});
+});
+</script>
+</body>
+</html>

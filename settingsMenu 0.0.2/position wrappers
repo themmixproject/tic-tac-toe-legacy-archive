@@ -1,0 +1,36 @@
+Positoin wrapperers:
+
+		#scoreboard-icon-wrapper{
+			position: relative;
+			left:50%;
+			top:50%;
+			transform: translate(-50%,-50%);
+		}
+		#pauseMenu-option-wrapper{
+			text-align: center;
+			display: table;
+		}
+		.pauseMenu-option-splitter{
+			border:none;
+			height:2px;
+			background-color:white;
+			width:80%;
+		}
+		.noOutline{
+			outline:none;
+			border:none;
+			padding:0;
+		}
+		#pauseMenu-position-wrapper{
+			position: absolute;
+			z-index: 1;
+			top:50%;
+			left:50%;
+			transform: translate(-50%,-50%);
+		}
+		.asset-wrapper{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}

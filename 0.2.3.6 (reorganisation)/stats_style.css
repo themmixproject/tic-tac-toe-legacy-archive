@@ -1,0 +1,36 @@
+.stats-content-wrapper{
+	display: flex;
+}
+.stats-catagory{
+	display: flex;
+	justify-content: flex-start;
+}
+.stats-txt{
+	color:white;
+	font-family:"Quicksand";
+}
+h2,.stats-txt{
+	margin:5px;
+}
+#stats-screen-header-wrapper{
+	display: inline-block;
+}
+#stats-screen-header{
+	font-size:25px;
+}
+#stats-header-underline{
+	height:1.5px;
+	width:inherit;
+	background-color:white;
+	border-radius:100px;
+}
+#stats-wrapper{
+	margin:10px;
+}
+.stats-catagory{
+	font-size:20px;
+	margin:5px;
+}
+#games-played{
+
+}

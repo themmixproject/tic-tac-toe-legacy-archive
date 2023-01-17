@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	body{
+		margin:0px;
+		width:auto;
+		height:auto;
+	}
+.cross {
+  background: black;
+  height: 100px;
+  position: relative;
+  width: 3px;
+  transform: rotate(45deg);
+}
+.cross::before {
+  background: black;
+  content: "";
+  height: 3px;
+  left: -48.5px;
+  position: absolute;
+  top: 48.5px;
+  width: 100px;
+}
+		div.container{
+			margin:auto;
+			width:312px;
+			height:312px;
+			margin-top:auto;
+		}
+		div.box{
+			width:100px;
+			height:100px;
+			float:left;
+			border:2px solid white;
+        	 background-color:gray;
+         	border-radius:20%;
+			font-size:50px;
+			text-align: center;
+			line-height: 100px;
+			font-family:"Arial";
+		}
+		div.output{
+			height:50px;
+			width:200px;
+			text-align: center;
+			line-height:50px;
+			background-color: transparent;
+			margin-bottom:10px;
+			margin:0 auto;
+			margin-bottom:20px;
+			font-family:"Arial";
+			size:10px;
+			font-weight: bold;
+		}
+		div.buttoncontainer{
+			width:300px;
+			height:100px;
+		}
+		button#modeselect{
+			margin-left:5%;
+		}
+      div#restart_button{
+         background:url("./MEDIA/Icons/restart.png");
+         background-size:contain;
+         background-position: center;
+         background-origin: unset;
+         transform-origin:center;
+         height:60px;
+         width:60px;
+         float:left;
+         margin-left:5px;
+         margin-right:5px;
+      }
+      div.player1_placeholder{
+         background:url("./MEDIA/Icons/1player.png");
+         background-size:contain;
+         background-repeat:no-repeat;
+         display:inline-block;
+         height:40px;
+         width:40px;
+         float:left;
+         border-radius:50%;
+               }
+      div.buttoncontainer{
+         float:left;
+         margin-top:5px;
+         width:312px;
+
+         text-align:center;
+      }
+      div.mode_placeholder{
+         background:url("./MEDIA/Icons/nightmode.png");
+         background-size:contain;
+         background-repeat:no-repeat;
+         display:inline-block;
+         height:40px;
+         width:40px;
+         float:left;
+         border-radius:50%;
+      }
+      div.preload{
+         display:none;
+      }
+      div.button_placeholder{
+      	margin: auto;
+      	display:inline-block;
+      }
+      img.Ximg{
+      	width: 50px;
+      	height: 50px;
+      	line-height: 100px;
+      }
+	</style>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+</head>
+<body>
+<div class="preload" preload>
+   <img src="./MEDIA/Icons/2player.png" preload/>
+   <img src="./MEDIA/Icons/2playernight.png" preload/>
+   <img src="./MEDIA/Icons/1player.png" preload/>
+   <img src="./MEDIA/Icons/1playernight.png" preload/>
+   <img src="./MEDIA/Icons/nightmode.png" preload/>
+   <img src="./MEDIA/Icons/daymode.png" preload/>
+   <img src="./MEDIA/Icons/restartnight.png" preload/>
+</div>
+<div class="container">
+	<div class="output" id="output"></div>
+	<div class="box 0" id="1" ></div>
+	<div class="box 1" id="2" ></div>
+	<div class="box 2" id="3" ></div>
+	<div class="box 3" id="4" ></div>
+	<div class="box 4" id="5" ></div>
+	<div class="box 5" id="6" ></div>
+	<div class="box 6" id="7" ></div>
+	<div class="box 7" id="8" ></div>
+	<div class="box 8" id="9" ></div>
+	<div class="buttoncontainer">
+			<div class="button_placeholder">
+		<div class="mode_placeholder" id="modeselect"></div>
+   		<div class="reset_placeholder" id="restart_button"></div>
+		<div class="player1_placeholder" id="playerselect"></div>
+		</div>            
+      </div>
+	</div>
+</div>
+<script src="AIv0.5.js"></script>
+<script src="_extentions/jquery/jquery-3.2.1.min.js" preload></script>
+<script src="_extentions/QTransform-master/QTransform.js" preload></script>
+<script type="text/javascript" src="_extentions/easing/jquery.easing.1.3.js" preload></script>
+<script type="text/javascript" preload>
+var A_grid =[];
+for(i=1;i<=9;i++){
+	A_grid.push(document.getElementById(i))
+}
+console.log(A_grid);
+var X="<img src='./MEDIA/Player/X.png' class='Ximg'></img>";
+var grid=new Array(0,0,0,0,0,0,0,0,0);
+var daymodeimg="url('./MEDIA/Icons/daymode.png')";
+var nightmodeimg="url('./MEDIA/Icons/nightmode.png')";
+var restartimg="url('./MEDIA/Icons/restart.png')";
+var restartnightimg="url('./MEDIA/Icons/restartnight.png')";
+var one_playerimg="url('./MEDIA/Icons/1player.png')";
+var one_playernightimg="url('./MEDIA/Icons/1playernight.png')";
+var two_playerimg="url('./MEDIA/Icons/2player.png')";
+var two_playernightimg="url('./MEDIA/Icons/2playernight.png')";
+var output = document.getElementById("output");
+var switches={
+	multi:false,
+	night:false,
+	turn:true,
+	win:false,
+	animation:false
+};
+function winCheckO() {8
+		if(
+ 			(grid[0]=="O"&&grid[1]=="O"&&grid[2]=="O")
+	 		||
+	 		(grid[3]=="O"&&grid[4]=="O"&&grid[5]=="O")
+			||
+			(grid[6]=="O"&&grid[7]=="O"&&grid[8]=="O")
+			||
+			(grid[0]=="O"&&grid[3]=="O"&&grid[6]=="O")
+			||
+			(grid[1]=="O"&&grid[4]=="O"&&grid[7]=="O")
+			||
+			(grid[2]=="O"&&grid[5]=="O"&&grid[8]=="O")
+			||
+			(grid[0]=="O"&&grid[4]=="O"&&grid[8]=="O")
+			||
+			(grid[2]=="O"&&grid[4]=="O"&&grid[6]=="O")
+ 		 )	
+ 		{	
+ 			output.innerHTML = "O WINS";
+ 			counter=5;
+ 			switches.win=true;
+ 			switches.turn=false;
+ 		}
+ 		else if(
+ 			(grid[0]!=0)&&
+ 			(grid[1]!=0)&&
+ 			(grid[2]!=0)&&
+ 			(grid[3]!=0)&&
+ 			(grid[4]!=0)&&
+ 			(grid[5]!=0)&&
+ 			(grid[6]!=0)&&
+ 			(grid[7]!=0)&&
+ 			(grid[8]!=0)&&
+ 			(switches.win==false)
+ 			)
+ 		{
+ 			output.innerHTML = "TIE";
+ 			switches.turn=false;
+ 			switches.win=true;
+ 		}
+ 		else{
+ 			console.log("wincheck false");
+ 		}
+ 	};
+ 		function winCheckX(){
+		if(
+ 			(grid[0]=="X"&&grid[1]=="X"&&grid[2]=="X")
+	 		||
+	 		(grid[3]=="X"&&grid[4]=="X"&&grid[5]=="X")
+			||
+			(grid[6]=="X"&&grid[7]=="X"&&grid[8]=="X")
+			||
+			(grid[0]=="X"&&grid[3]=="X"&&grid[6]=="X")
+			||
+			(grid[1]=="X"&&grid[4]=="X"&&grid[7]=="X")
+			||
+			(grid[2]=="X"&&grid[5]=="X"&&grid[8]=="X")
+			||
+			(grid[0]=="X"&&grid[4]=="X"&&grid[8]=="X")
+			||
+			(grid[2]=="X"&&grid[4]=="X"&&grid[6]=="X")
+ 		 )	
+ 		{	
+ 			console.log("X won");
+ 			output.innerHTML = "X WINS";
+ 			switches.win=true;
+ 			switches.turn=false;
+ 		}
+
+ 		else{
+ 			console.log("Win False");
+ 		}
+};
+		function reset(){
+			console.log("reset");
+
+		  //$('div#restart_button').css({'transform' : 'rotate'('0deg')});
+		grid=["0","0","0","0","0","0","0","0","0"];
+		console.log(grid);
+		$('.box').text('');
+		$('div.box,div#output').text("");
+		win=false;
+		$('div#output').css({'backgroundColor':'transparent'});
+		switches.turn=true;
+		switches.win=false;
+	}
+$(document).ready(function(){
+
+$('.box').click(function(){
+	console.log(event.currentTarget.className);
+	if(switches.multi==false){
+		if($(this).text()=='' && switches.turn==true && switches.win==false){
+			switches.turn=false;
+			$(this).text('O');
+			console.log('block chosen');
+			grid[event.currentTarget.className.split(' ')[1]]="O";
+			winCheckO();
+			if(switches.win==false){setTimeout(function() { block(); }, 150);};
+			//grid[$(event.currentTarget.className.split()[1])]='O';
+			console.log(grid);
+		}	
+		else{
+			console.log("choose an empty block");
+		}
+
+	}
+	else{	
+		if($(this).text()=='' && switches.turn==true){
+			$(this).text('O');
+			console.log('block chosen');
+			switches.turn=false;
+		}
+		else if($(this).text()=='' && switches.turn==false){
+			$(this).text('X');
+			console.log('block chosen');
+			switches.turn=true;
+		}
+	}
+
+});
+
+
+		$('div#restart_button').click(function(){
+			if(switches.animation==false){
+				switches.animation=true;
+				$(this).animate({rotate:'-=360deg'},{duration:950,easing:'easeOutQuad',queue:true});
+				setTimeout(function() { switches.animation=false }, 950);
+					
+			}
+			else{console.log("animation is still running")};
+			reset();
+		});
+		$('#modeselect').click(function(){
+			console.log(switches.multi , switches.night);
+			if(switches.night==false){
+				switches.night=true;
+				$('.box').css({'backgroundColor':'Black','color':'White'});
+				$('body').css({'backgroundColor':'Black'});
+				$('#restart_button').css({'backgroundImage':restartnightimg});
+				$('#modeselect').css({'backgroundImage':daymodeimg});
+				if(switches.multi==true){
+					$('#playerselect').css({'backgroundImage':two_playernightimg});
+				}
+				else{
+					$('#playerselect').css({'backgroundImage':one_playernightimg});
+				};
+			}
+			else{
+				switches.night=false;
+				$('.box').css({'backgroundColor':'Gray','color':'Black'});
+				$('body').css({'backgroundColor':'White'});
+				$('#modeselect').css({'backgroundImage':nightmodeimg})
+				$('#restart_button').css({'backgroundImage':restartimg});
+				if(switches.multi==true){
+					$('#playerselect').css({'backgroundImage':two_playerimg});
+				}
+				else{
+					$('#playerselect').css({'backgroundImage':one_playerimg});
+				};
+			};
+
+		});
+$('#playerselect').click(function(){
+	console.log(switches.multi,switches.night);
+	if(switches.multi==false){
+		if(switches.night==false){
+			$('#playerselect').css({'backgroundImage':two_playerimg});
+		}
+		else{$('#playerselect').css({'backgroundImage':two_playernightimg})};
+		switches.multi=true;
+		reset();
+	}
+	else{
+		if(switches.night==true){
+			$('#playerselect').css({'backgroundImage':one_playernightimg});
+		}
+		else{
+			$('#playerselect').css({'backgroundImage':one_playerimg});
+		};
+		switches.multi=false;
+		reset();
+	};
+
+
+
+});
+
+});
+</script>
+
+</body>
+</html>

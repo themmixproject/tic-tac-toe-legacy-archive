@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	body{
+		margin:0px;
+		width:auto;
+		height:auto;
+	}
+		div.container{
+			margin:auto;
+			width:312px;
+			height:312px;
+			margin-top:auto;
+		}
+		div.box{
+			width:100px;
+			height:100px;
+			float:left;
+			border:2px solid black;
+			font-size:50px;
+			font-family:"Arial";
+			text-align: center;
+			line-height: 100px;
+		}
+		div.output{
+			height:50px;
+			width:200px;
+			text-align: center;
+			line-height:50px;
+			background-color: transparent;
+			margin-bottom:10px;
+			margin:0 auto;
+			margin-bottom:20px;
+			font-family:"Arial";
+			size:10px;
+			font-weight: bold;
+		}
+		div.buttoncontainer{
+			width:300px;
+			height:100px;
+		}
+		button.button{
+			margin-top: 10px;
+			font-size:20px;
+			font-family: "Arial";
+			background-color: white;
+			border:2px solid black;
+			display: inline-block;
+			float:left;
+			padding-top:1px;
+			padding-bottom:1px;
+		}
+		button#button1{
+			margin-left:5%;
+		}
+	</style>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+</head>
+<body>
+
+<div class="container">
+	<div class="output" id="output"></div>
+	<div class="box" id="1" onclick="K(id)"></div>
+	<div class="box" id="2" onclick="K(id)"></div>
+	<div class="box" id="3" onclick="K(id)"></div>
+	<div class="box" id="4" onclick="K(id)"></div>
+	<div class="box" id="5" onclick="K(id)"></div>
+	<div class="box" id="6" onclick="K(id)"></div>
+	<div class="box" id="7" onclick="K(id)"></div>
+	<div class="box" id="8" onclick="K(id)"></div>
+	<div class="box" id="9" onclick="K(id)"></div>
+	<div class="buttoncontainer">
+		<button onclick="reset()" class="button" id="button">restart</button>
+		<button onclick="nightmode()" class="button" id="button1">Night</button>
+	</div>
+</div>
+
+<script type="text/javascript" preload>
+var win=false;
+var counter = 0;
+var click=true;
+var b1 = document.getElementById(1);
+var b2 = document.getElementById(2);
+var b3 = document.getElementById(3);
+var b4 = document.getElementById(4);
+var b5 = document.getElementById(5);
+var b6 = document.getElementById(6);
+var b7 = document.getElementById(7);
+var b8 = document.getElementById(8);
+var b9 = document.getElementById(9);
+var b1i=b1.innerHTML;
+var b2i=b2.innerHTML;
+var b3i=b3.innerHTML;
+var b4i=b4.innerHTML;
+var b5i=b5.innerHTML;
+var b6i=b6.innerHTML;
+var b7i=b7.innerHTML;
+var b8i=b8.innerHTML;
+var b9i=b9.innerHTML;
+var output = document.getElementById("output");
+function winCheckO() {
+		if(
+ 			((b1.innerHTML == b2.innerHTML && b3.innerHTML == b2.innerHTML)&& b3.innerHTML=="O")
+	 		||
+	 		((b4.innerHTML == b5.innerHTML && b6.innerHTML == b5.innerHTML)&& b6.innerHTML=="O")
+			||
+			((b7.innerHTML == b8.innerHTML && b9.innerHTML == b8.innerHTML)&& b9.innerHTML=="O")
+			||
+			((b1.innerHTML == b4.innerHTML && b7.innerHTML == b4.innerHTML)&& b7.innerHTML=="O")
+			||
+			((b2.innerHTML == b5.innerHTML && b8.innerHTML == b5.innerHTML)&& b8.innerHTML=="O")
+			||
+			((b3.innerHTML == b6.innerHTML && b9.innerHTML == b6.innerHTML)&& b9.innerHTML=="O")
+			||
+			((b1.innerHTML == b5.innerHTML && b9.innerHTML == b5.innerHTML)&& b9.innerHTML=="O")
+			||
+			((b3.innerHTML == b5.innerHTML && b7.innerHTML == b5.innerHTML)&& b7.innerHTML=="O")
+ 		 )	
+ 		{	
+ 			output.innerHTML = "O WINS";
+ 			counter=5;
+ 			click=false;
+ 			win=true
+ 		}
+ 		if(
+ 			(b1.innerHTML != "") && 
+ 			(b2.innerHTML != "") && 
+ 			(b3.innerHTML != "") && 
+ 			(b4.innerHTML != "") && 
+ 			(b5.innerHTML != "") && 
+ 			(b6.innerHTML != "") && 
+ 			(b7.innerHTML != "") && 
+ 			(b8.innerHTML != "") && 
+ 			(b9.innerHTML != "")
+ 			)
+ 		{
+ 			output.innerHTML = "TIE";
+ 			counter=5;
+ 			click=false;
+ 		}
+ 		else{
+ 			console.log("wincheck false");
+ 		}
+ 	};
+ 		function winCheckX(){
+		if(
+ 			((b1.innerHTML == b2.innerHTML && b3.innerHTML == b2.innerHTML)&& b3.innerHTML=="X")
+	 		||
+	 		((b4.innerHTML == b5.innerHTML && b6.innerHTML == b5.innerHTML)&& b6.innerHTML=="X")
+			||
+			((b7.innerHTML == b8.innerHTML && b9.innerHTML == b8.innerHTML)&& b9.innerHTML=="X")
+			||
+			((b1.innerHTML == b4.innerHTML && b7.innerHTML == b4.innerHTML)&& b7.innerHTML=="X")
+			||
+			((b2.innerHTML == b5.innerHTML && b8.innerHTML == b5.innerHTML)&& b8.innerHTML=="X")
+			||
+			((b3.innerHTML == b6.innerHTML && b9.innerHTML == b6.innerHTML)&& b9.innerHTML=="X")
+			||
+			((b1.innerHTML == b5.innerHTML && b9.innerHTML == b5.innerHTML)&& b9.innerHTML=="X")
+			||
+			((b3.innerHTML == b5.innerHTML && b7.innerHTML == b5.innerHTML)&& b7.innerHTML=="X")
+
+ 		 )	
+ 		{	
+ 			console.log("X won");
+ 			output.innerHTML = "X WINS";
+ 			counter=5;
+ 			click=false;
+ 			win=true;
+ 		}
+
+ 		else{
+ 			console.log("Win False");
+ 		}
+};
+ 	 function block(){
+
+
+
+ 	 if((b1.innerHTML=="O" && b5.innerHTML=="O" )&& b9.innerHTML==""){
+ 		b9.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+   	 else if((b1.innerHTML=="O" && b9.innerHTML=="O" )&& b5.innerHTML==""){
+ 		b5.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+    else if((b5.innerHTML=="O" && b9.innerHTML=="O" )&& b1.innerHTML==""){
+ 		b1.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+
+
+ 	 else if((b3.innerHTML=="O" && b5.innerHTML=="O" )&& b7.innerHTML==""){
+ 		b7.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+   	 else if((b3.innerHTML=="O" && b7.innerHTML=="O" )&& b5.innerHTML==""){
+ 		b5.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+    else if((b7.innerHTML=="O" && b5.innerHTML=="O" )&& b3.innerHTML==""){
+ 		b3.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+
+
+
+ 	else if((b1.innerHTML=="O" && b3.innerHTML=="O" )&& b2.innerHTML==""){
+ 		b2.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+  	else if((b1.innerHTML=="O" && b2.innerHTML=="O" )&& b3.innerHTML==""){
+ 		b3.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+   	else if((b2.innerHTML=="O" && b3.innerHTML=="O" )&& b1.innerHTML==""){
+ 		b1.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+   	else if((b4.innerHTML=="O" && b5.innerHTML=="O" )&& b6.innerHTML==""){
+ 		b6.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+   	else if((b4.innerHTML=="O" && b6.innerHTML=="O" )&& b5.innerHTML==""){
+ 		b5.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+   	else if((b5.innerHTML=="O" && b6.innerHTML=="O" )&& b4.innerHTML==""){
+ 		b4.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+   	else if((b7.innerHTML=="O" && b8.innerHTML=="O" )&& b9.innerHTML==""){
+ 		b9.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+    else if((b7.innerHTML=="O" && b9.innerHTML=="O" )&& b8.innerHTML==""){
+ 		b8.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+ 	else if((b8.innerHTML=="O" && b9.innerHTML=="O" )&& b7.innerHTML==""){
+ 		b7.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+
+
+
+
+
+  	else if((b1.innerHTML=="O" && b4.innerHTML=="O" )&& b7.innerHTML==""){
+ 		b7.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+   	else if((b1.innerHTML=="O" && b7.innerHTML=="O" )&& b4.innerHTML==""){
+ 		b4.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+  	else if((b4.innerHTML=="O" && b7.innerHTML=="O" )&& b1.innerHTML==""){
+ 		b1.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+ 	else if((b2.innerHTML=="O" && b5.innerHTML=="O" )&& b8.innerHTML==""){
+ 		b8.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+  	 else if((b2.innerHTML=="O" && b8.innerHTML=="O" )&& b5.innerHTML==""){
+ 		b5.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+   	 else if((b5.innerHTML=="O" && b8.innerHTML=="O" )&& b2.innerHTML==""){
+ 		b2.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+  	else if((b3.innerHTML=="O" && b6.innerHTML=="O" )&& b9.innerHTML==""){
+ 		b9.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+  	 else if((b3.innerHTML=="O" && b9.innerHTML=="O" )&& b6.innerHTML==""){
+ 		b6.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+   	 else if((b6.innerHTML=="O" && b9.innerHTML=="O" )&& b3.innerHTML==""){
+ 		b3.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+
+
+
+ 	else{
+ 		AI();
+ 	}
+ };
+  	 function seeWin(){
+
+
+
+ 	 if((b1.innerHTML=="X" && b5.innerHTML=="X" )&& b9.innerHTML==""){
+ 		b9.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+   	 else if((b1.innerHTML=="X" && b9.innerHTML=="X" )&& b5.innerHTML==""){
+ 		b5.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+    else if((b5.innerHTML=="X" && b9.innerHTML=="X" )&& b1.innerHTML==""){
+ 		b1.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+
+
+ 	 else if((b3.innerHTML=="X" && b5.innerHTML=="X" )&& b7.innerHTML==""){
+ 		b7.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+   	 else if((b3.innerHTML=="X" && b7.innerHTML=="X" )&& b5.innerHTML==""){
+ 		b5.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+    else if((b7.innerHTML=="X" && b5.innerHTML=="X" )&& b3.innerHTML==""){
+ 		b3.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+
+
+
+ 	else if((b1.innerHTML=="X" && b3.innerHTML=="X" )&& b2.innerHTML==""){
+ 		b2.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+  	else if((b1.innerHTML=="X" && b2.innerHTML=="X" )&& b3.innerHTML==""){
+ 		b3.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+   	else if((b2.innerHTML=="X" && b3.innerHTML=="X" )&& b1.innerHTML==""){
+ 		b1.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+   	else if((b4.innerHTML=="X" && b5.innerHTML=="X" )&& b6.innerHTML==""){
+ 		b6.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+   	else if((b4.innerHTML=="X" && b6.innerHTML=="X" )&& b5.innerHTML==""){
+ 		b5.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+   	else if((b5.innerHTML=="X" && b6.innerHTML=="X" )&& b4.innerHTML==""){
+ 		b4.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+   	else if((b7.innerHTML=="X" && b8.innerHTML=="X" )&& b9.innerHTML==""){
+ 		b9.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+    else if((b7.innerHTML=="X" && b9.innerHTML=="X" )&& b8.innerHTML==""){
+ 		b8.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+ 	else if((b8.innerHTML=="X" && b9.innerHTML=="X" )&& b7.innerHTML==""){
+ 		b7.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+
+
+
+
+
+  	else if((b1.innerHTML=="X" && b4.innerHTML=="X" )&& b7.innerHTML==""){
+ 		b7.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+   	else if((b1.innerHTML=="X" && b7.innerHTML=="X" )&& b4.innerHTML==""){
+ 		b4.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+  	else if((b4.innerHTML=="X" && b7.innerHTML=="X" )&& b1.innerHTML==""){
+ 		b1.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+ 	else if((b2.innerHTML=="X" && b5.innerHTML=="X" )&& b8.innerHTML==""){
+ 		b8.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+  	 else if((b2.innerHTML=="X" && b8.innerHTML=="X" )&& b5.innerHTML==""){
+ 		b5.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+   	 else if((b5.innerHTML=="X" && b8.innerHTML=="X" )&& b2.innerHTML==""){
+ 		b2.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+  	else if((b3.innerHTML=="X" && b6.innerHTML=="X" )&& b9.innerHTML==""){
+ 		b9.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+  	 else if((b3.innerHTML=="X" && b9.innerHTML=="X" )&& b6.innerHTML==""){
+ 		b6.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+   	 else if((b6.innerHTML=="X" && b9.innerHTML=="X" )&& b3.innerHTML==""){
+ 		b3.innerHTML = "X";
+ 		winCheckX();
+ 		click=true;
+ 		console.log("block");
+ 	}
+
+
+
+ 	else{
+ 		block();
+ 	}
+ };
+function K(d){
+ var Cblock = document.getElementById(d);
+ 	if((click === true) && (Cblock.innerHTML == "") && (win===false)){
+ 		
+ 		Cblock.innerHTML = "O";
+ 		click=false;
+ 		console.log(click + "Cblock");
+ 		counter++;
+ 		winCheckO();
+ 		if(counter<=4){
+ 		setTimeout(function() { seeWin(); }, 250);
+ 		};
+ 	};
+	
+ 	};
+
+function AI(){
+	function ran(){
+		num = Math.floor(Math.random() * 9 +1);
+		return num;
+	};
+	var number = ran();
+	console.log(number);
+	var Randomblock = document.getElementById(number);
+	if(Randomblock.innerHTML != ""){
+		console.log(click + "if");
+		AI();
+			}
+	else{
+
+		Randomblock.innerHTML = "X";
+		winCheckX();	
+		click=true;
+		console.log(click + "else");
+	};
+};
+function reset(){
+	for (var i = 1; i <= 9; i++) {
+   		document.getElementById(i).innerHTML = null;
+   	};
+   		if(click == false){
+   			click = true;
+   			
+   		};
+   		win=false; 
+   		counter=0;
+   		output.style.background = "transparent";
+   		if(output.innerHTML!=null){
+   			output.innerHTML=null;
+   		}
+};
+function nightmode(){
+
+	for (var i = 1; i <= 9; i++) {
+   		document.getElementById(i).style.background = "black";
+   		document.getElementById(i).style.border = "2px solid white";
+   		document.getElementById(i).style.color = "white";
+   	};
+   		output.style.color="white";
+   		document.getElementById("button").style.border = "2px solid white";
+   		document.getElementById("button").style.background = "black";
+   		document.getElementById("button").style.color = "white";
+   		document.body.style.background = "black";
+   		console.log(output.style.color);
+   		document.getElementById("button1").style.border = "2px solid white";
+   		document.getElementById("button1").style.background = "black";
+   		document.getElementById("button1").style.color = "white";
+   		document.getElementById("button1").onclick = function(){daymode()};
+   		document.getElementById("button1").innerHTML = "Day";  		
+};
+function daymode(){
+	document.body.style.background = "white";
+	for (var i = 1; i <= 9; i++) {
+   		document.getElementById(i).style.background = "white";
+   		document.getElementById(i).style.border = "2px solid black";
+   		document.getElementById(i).style.color = "black";
+   	};
+   		output.style.color="black";
+   		document.getElementById("button").style.border = "2px solid black";
+   		document.getElementById("button").style.background = "white";
+   		document.getElementById("button").style.color = "black";
+   		document.getElementById("button1").style.border = "2px solid black";
+   		document.getElementById("button1").style.background = "white";
+   		document.getElementById("button1").style.color = "black";
+   		document.getElementById("button1").onclick = function(){nightmode()};
+   		document.getElementById("button1").innerHTML = "Night";
+
+};
+</script>
+</body>
+</html>

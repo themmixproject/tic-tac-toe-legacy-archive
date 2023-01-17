@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		div{
+			height:200px;
+			width:300px;
+			border:2px solid black;
+			font-family: "arial";
+		}
+	</style>
+</head>
+<body>
+<div id="myDiv"></div>
+<script type="text/javascript">
+	var mouseStatus = 'up';
+	var myElement = document.getElementById("myDiv");
+var mouseTimeout;
+myElement.addEventListener("mousedown",function() {
+    clearTimeout(mouseTimeout);
+    mouseStatus='down';
+    mouseTimeout = setTimeout(function(){
+        mouseStatus='longDown';
+        doSpecialStuffBecauseOfLongDown(); // put your secret sauce here
+    }, 1500);
+}, false);
+myElement.addEventListener("mouseup",function() {
+    clearTimeout(mouseTimeout);
+    mouseStatus='up';
+}, false);
+</script>
+</body>
+</html>

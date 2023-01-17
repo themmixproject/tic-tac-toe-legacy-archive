@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	body{
+		margin:0px;
+		width:auto;
+		height:auto;
+	}
+		div.container{
+			margin:auto;
+			width:312px;
+			height:312px;
+			margin-top:auto;
+		}
+		div.box{
+			width:100px;
+			height:100px;
+			float:left;
+			border:2px solid white;
+         background-color:gray;
+         border-radius:20%;
+			font-size:50px;
+			font-family:"Arial";
+			text-align: center;
+			line-height: 100px;
+		}
+		div.output{
+			height:50px;
+			width:200px;
+			text-align: center;
+			line-height:50px;
+			background-color: transparent;
+			margin-bottom:10px;
+			margin:0 auto;
+			margin-bottom:20px;
+			font-family:"Arial";
+			size:10px;
+			font-weight: bold;
+		}
+		div.buttoncontainer{
+			width:300px;
+			height:100px;
+		}
+		div.restart_button{
+			margin-top: 10px;
+			font-size:20px;
+			font-family: "Arial";
+			background-color: white;
+			border:2px solid black;
+			display: inline-block;
+			float:left;
+			padding-top:1px;
+			padding-bottom:1px;
+		}
+		button#modeselect{
+			margin-left:5%;
+		}
+      div.reset_placeholder{
+         background:url("./MEDIA/Icons/restart.png");
+         background-size:contain;
+         background-repeat:no-repeat;
+         border-radius:50%;
+         height:60px;
+         width:60px;
+         float:left;
+         margin-left:5px;
+         margin-right:5px;
+      }
+      div.player1_placeholder{
+         background:url("./MEDIA/Icons/1player.png");
+         background-size:contain;
+         background-repeat:no-repeat;
+         display:inline-block;
+         height:40px;
+         width:40px;
+         float:left;
+         border-radius:50%;
+               }
+      div.buttoncontainer{
+         float:left;
+         margin-top:5px;
+         width:312px;
+
+         text-align:center;
+      }
+      div.mode_placeholder{
+         background:url("./MEDIA/Icons/nightmode.png");
+         background-size:contain;
+         background-repeat:no-repeat;
+         display:inline-block;
+         height:40px;
+         width:40px;
+         float:left;
+         border-radius:50%;
+      }
+      div.preload{
+         display:none;
+      }
+      div.button_placeholder{
+      	margin:0 auto;
+      	display:inline-block;
+      }
+	</style>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+</head>
+<body>
+<div class="preload" preload>
+   <img src="./MEDIA/Icons/2player.png" preload/>
+   <img src="./MEDIA/Icons/2playernight.png" preload/>
+   <img src="./MEDIA/Icons/1player.png" preload/>
+   <img src="./MEDIA/Icons/1playernight.png" preload/>
+   <img src="./MEDIA/Icons/nightmode.png" preload/>
+   <img src="./MEDIA/Icons/daymode.png" preload/>
+   <img src="./MEDIA/Icons/restartnight.png" preload/>
+</div>
+<div class="container">
+	<div class="output" id="output"></div>
+	<div class="box" id="1" onclick="K(id)"></div>
+	<div class="box" id="2" onclick="K(id)"></div>
+	<div class="box" id="3" onclick="K(id)"></div>
+	<div class="box" id="4" onclick="K(id)"></div>
+	<div class="box" id="5" onclick="K(id)"></div>
+	<div class="box" id="6" onclick="K(id)"></div>
+	<div class="box" id="7" onclick="K(id)"></div>
+	<div class="box" id="8" onclick="K(id)"></div>
+	<div class="box" id="9" onclick="K(id)"></div>
+	<div class="buttoncontainer">
+			<div class="button_placeholder">
+		<div onclick="nightmode()" class="mode_placeholder" id="modeselect"></div>
+   <div class="reset_placeholder" onclick="reset()" id="restart_button"></div>
+		<div onclick="Multi()" class="player1_placeholder" id="playerselect"></div>
+		</div>            
+      </div>
+	</div>
+</div>
+
+<script type="text/javascript" preload>
+var change = false;
+var night=false;
+var multi = false;
+var win=false;
+var counter = 0;
+var click=true;
+var sq1 = document.getElementById(1);
+var sq2 = document.getElementById(2);
+var sq3 = document.getElementById(3);
+var sq4 = document.getElementById(4);
+var sq5 = document.getElementById(5);
+var sq6 = document.getElementById(6);
+var sq7 = document.getElementById(7);
+var sq8 = document.getElementById(8);
+var sq9 = document.getElementById(9);
+var sq1i=sq1.innerHTML;
+var sq2i=sq2.innerHTML;
+var sq3i=sq3.innerHTML;
+var sq4i=sq4.innerHTML;
+var sq5i=sq5.innerHTML;
+var sq6i=sq6.innerHTML;
+var sq7i=sq7.innerHTML;
+var sq8i=sq8.innerHTML;
+var sq9i=sq9.innerHTML;
+var daymodeimg="url('./MEDIA/Icons/daymode.png')";
+var nightmodeimg="url('./MEDIA/Icons/nightmode.png')";
+var restartimg="url('./MEDIA/Icons/restart.png')";
+var restartnightimg="url('./MEDIA/Icons/restartnight.png')";
+var one_playerimg="url('./MEDIA/Icons/1player.png')";
+var one_playernightimg="url('./MEDIA/Icons/1playernight.png')";
+var two_playerimg="url('./MEDIA/Icons/2player.png')";
+var two_playernightimg="url('./MEDIA/Icons/2playernight.png')";
+var output = document.getElementById("output");
+function winCheckO() {
+		if(
+ 			((sq1.innerHTML == sq2.innerHTML && sq3.innerHTML == sq2.innerHTML)&& sq3.innerHTML=="O")
+	 		||
+	 		((sq4.innerHTML == sq5.innerHTML && sq6.innerHTML == sq5.innerHTML)&& sq6.innerHTML=="O")
+			||
+			((sq7.innerHTML == sq8.innerHTML && sq9.innerHTML == sq8.innerHTML)&& sq9.innerHTML=="O")
+			||
+			((sq1.innerHTML == sq4.innerHTML && sq7.innerHTML == sq4.innerHTML)&& sq7.innerHTML=="O")
+			||
+			((sq2.innerHTML == sq5.innerHTML && sq8.innerHTML == sq5.innerHTML)&& sq8.innerHTML=="O")
+			||
+			((sq3.innerHTML == sq6.innerHTML && sq9.innerHTML == sq6.innerHTML)&& sq9.innerHTML=="O")
+			||
+			((sq1.innerHTML == sq5.innerHTML && sq9.innerHTML == sq5.innerHTML)&& sq9.innerHTML=="O")
+			||
+			((sq3.innerHTML == sq5.innerHTML && sq7.innerHTML == sq5.innerHTML)&& sq7.innerHTML=="O")
+ 		 )	
+ 		{	
+ 			output.innerHTML = "O WINS";
+ 			counter=5;
+ 			click=false;
+ 			win=true
+ 		}
+ 		if(
+ 			(sq1.innerHTML != "") && 
+ 			(sq2.innerHTML != "") && 
+ 			(sq3.innerHTML != "") && 
+ 			(sq4.innerHTML != "") && 
+ 			(sq5.innerHTML != "") && 
+ 			(sq6.innerHTML != "") && 
+ 			(sq7.innerHTML != "") && 
+ 			(sq8.innerHTML != "") && 
+ 			(sq9.innerHTML != "") &&
+ 			(win==false)
+ 			)
+ 		{
+ 			output.innerHTML = "TIE";
+ 			counter=5;
+ 			click=false;
+ 		}
+ 		else{
+ 			console.log("wincheck false");
+ 		}
+ 	};
+ 		function winCheckX(){
+		if(
+ 			((sq1.innerHTML == sq2.innerHTML && sq3.innerHTML == sq2.innerHTML)&& sq3.innerHTML=="X")
+	 		||
+	 		((sq4.innerHTML == sq5.innerHTML && sq6.innerHTML == sq5.innerHTML)&& sq6.innerHTML=="X")
+			||
+			((sq7.innerHTML == sq8.innerHTML && sq9.innerHTML == sq8.innerHTML)&& sq9.innerHTML=="X")
+			||
+			((sq1.innerHTML == sq4.innerHTML && sq7.innerHTML == sq4.innerHTML)&& sq7.innerHTML=="X")
+			||
+			((sq2.innerHTML == sq5.innerHTML && sq8.innerHTML == sq5.innerHTML)&& sq8.innerHTML=="X")
+			||
+			((sq3.innerHTML == sq6.innerHTML && sq9.innerHTML == sq6.innerHTML)&& sq9.innerHTML=="X")
+			||
+			((sq1.innerHTML == sq5.innerHTML && sq9.innerHTML == sq5.innerHTML)&& sq9.innerHTML=="X")
+			||
+			((sq3.innerHTML == sq5.innerHTML && sq7.innerHTML == sq5.innerHTML)&& sq7.innerHTML=="X")
+
+ 		 )	
+ 		{	
+ 			console.log("X won");
+ 			output.innerHTML = "X WINS";
+ 			counter=5;
+ 			click=false;
+ 			win=true;
+ 		}
+
+ 		else{
+ 			console.log("Win False");
+ 		}
+};
+function Multi(){
+	multi=true;
+	if(night==false){
+	   document.getElementById('playerselect').style.backgroundImage  = two_playerimg;
+	document.getElementById("playerselect").onclick = function(){Single()};
+	reset();
+	}
+	else if(night==true){
+	   document.getElementById('playerselect').style.backgroundImage  =two_playernightimg;
+	document.getElementById("playerselect").onclick = function(){Single()};
+	reset();
+}
+console.log(document.getElementById('playerselect').style.backgroundImage);
+         console.log(multi);
+         console.log(night)
+};
+function Single(){
+	multi=false;
+	if(night==true){
+	   document.getElementById('playerselect').style.backgroundImage  = one_playernightimg;
+	document.getElementById("playerselect").onclick = function(){Multi()};
+	reset();
+	}
+	else if(night==false){
+	   document.getElementById('playerselect').style.backgroundImage  = one_playerimg;
+	document.getElementById("playerselect").onclick = function(){Multi()};
+	reset();
+}
+console.log(document.getElementById('playerselect').style.backgroundImage);
+         console.log(multi);
+         console.log(night)
+}
+function K(d){
+ var Cblock = document.getElementById(d);
+ if(multi==false){
+ 	if((click === true) && (Cblock.innerHTML == "") && (win===false)){
+ 		
+ 		Cblock.innerHTML = "O";
+ 		click=false;
+ 		console.log(click + "Cblock");
+ 		counter++;
+ 		winCheckO();
+ 		if(counter<=4){
+ 		setTimeout(function() { seeWin(); }, 250);
+ 		};
+ 	};
+	}
+else if(multi===true){
+		 	if((click === true) && (Cblock.innerHTML == "") && (win===false)){
+ 		Cblock.innerHTML = "O";
+ 		winCheckO();
+ 		click=false;
+ 	}
+ 	else if ((click == false) && (Cblock.innerHTML == "") && (win===false)){
+ 		Cblock.innerHTML = "X";
+ 		winCheckX();
+ 		click = true;
+ 	}
+ 	else{
+ 		console.log("choose an empty block");
+ 	};
+};
+}
+function reset(){
+	for (var i = 1; i <= 9; i++) {
+   		document.getElementById(i).innerHTML = null;
+   	};
+   		if(click == false){
+   			click = true;
+   			
+   		};
+   		win=false; 
+   		counter=0;
+   		output.style.background = "transparent";
+   		if(output.innerHTML!=null){
+   			output.innerHTML=null;
+   		}
+};
+function nightmode(){
+	for (var i = 1; i <= 9; i++) {
+   		document.getElementById(i).style.background = "black";
+   		document.getElementById(i).style.border = "2px solid white";
+   		document.getElementById(i).style.color = "white";
+   	};
+   		night=true;
+   		output.style.color="white";
+   		document.body.style.background = "black";
+   		console.log(output.style.color);
+   		document.getElementById("modeselect").onclick = function(){daymode()};
+         document.getElementById("modeselect").style.backgroundImage = daymodeimg;
+         document.getElementById("restart_button").style.backgroundImage = restartnightimg;
+         if(multi==false){
+         	document.getElementById('playerselect').style.backgroundImage  =one_playernightimg;
+         }
+         else if(multi==true){
+         	document.getElementById('playerselect').style.backgroundImage  = two_playernightimg;
+         }
+         console.log(document.getElementById('playerselect').style.backgroundImage);
+          console.log(multi);
+         console.log(night)	
+};
+function daymode(){
+	document.body.style.background = "white";
+	for (var i = 1; i <= 9; i++) {
+   		document.getElementById(i).style.background = "gray";
+   		document.getElementById(i).style.color = "black";
+   	};
+   		night=false;
+   		output.style.color="black";
+   		document.getElementById("modeselect").onclick = function(){nightmode()};
+   		document.getElementById("modeselect").style.backgroundImage = nightmodeimg;
+        document.getElementById("restart_button").style.backgroundImage = restartimg;
+        if(multi==false){
+         	document.getElementById('playerselect').style.backgroundImage  = one_playerimg;
+         }
+         else if(multi==true){
+         	document.getElementById('playerselect').style.backgroundImage  = two_playerimg;
+         }
+         console.log(multi);
+         console.log(night);	
+         console.log(document.getElementById('playerselect').style.backgroundImage);
+};
+</script>
+<script src="AI.js"></script>
+<!-- <script src="Colorswitch.js"></script> -->
+</body>
+</html>
